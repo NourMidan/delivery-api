@@ -1,5 +1,5 @@
-import { Client } from 'src/clients/entities/client.entity';
-import { Owner } from 'src/owners/entities/owner.entity';
+import { Client } from '../clients/entities/client.entity';
+import { Owner } from '../owners/entities/owner.entity';
 
 export interface userData {
   email: string;

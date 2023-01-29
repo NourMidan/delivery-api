@@ -1,5 +1,5 @@
-import { Cart } from 'src/cart/entities/cart.entity';
-import { Order } from 'src/order/entities/order.entity';
+import { Cart } from '../cart/entities/cart.entity';
+import { Order } from '../order/entities/order.entity';
 
 export interface ClientData {
   name: string;

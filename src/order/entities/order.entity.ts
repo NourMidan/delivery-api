@@ -1,6 +1,6 @@
-import { Client } from 'src/clients/entities/client.entity';
-import { Item } from 'src/item/entities/item.entity';
-import { Menu } from 'src/menu/entities/menu.entity';
+import { Client } from '../../clients/entities/client.entity';
+import { Item } from '../../item/entities/item.entity';
+import { Menu } from '../../menu/entities/menu.entity';
 import {
   Column,
   Entity,

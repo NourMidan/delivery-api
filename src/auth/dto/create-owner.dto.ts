@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString, MinLength, MaxLength } from 'class-validator';
-import { Categories } from 'src/menu/entities/menu.entity';
+import { Categories } from '../../menu/entities/menu.entity';
 
 export class CreateOwnerDto {
   @IsNotEmpty()

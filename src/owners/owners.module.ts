@@ -5,13 +5,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { Owner } from './entities/owner.entity';
-import { AuthModule } from 'src/auth/auth.module';
-import { Menu } from 'src/menu/entities/menu.entity';
-import { UsersService } from 'src/users/users.service';
-import { User } from 'src/users/entities/user.entity';
+import { AuthModule } from '../auth/auth.module';
+import { Menu } from '../menu/entities/menu.entity';
+import { UsersService } from '../users/users.service';
+import { User } from '../users/entities/user.entity';
 import { OwnersRepository } from './owners.respository';
-import { MenusRepository } from 'src/menu/menu.respository';
-import { UsersRepository } from 'src/users/users.respository';
+import { MenusRepository } from '../menu/menu.respository';
+import { UsersRepository } from '../users/users.respository';
 
 @Module({
   imports: [

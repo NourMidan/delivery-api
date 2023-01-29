@@ -8,16 +8,10 @@ import { ItemModule } from './item/item.module';
 import { AuthModule } from './auth/auth.module';
 import { ClientsModule } from './clients/clients.module';
 import { UsersModule } from './users/users.module';
-import { ConfigModule } from '@nestjs/config';
-import configurations from './config/configurations';
 
 @Module({
   imports: [
     ClientsModule,
-    // ConfigModule.forRoot({
-    //   load: [configurations],
-    // }),
-    // TypeOrmModule.forRoot(),
 
     TypeOrmModule.forRoot({
       type: 'mysql',

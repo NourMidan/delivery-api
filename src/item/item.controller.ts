@@ -11,10 +11,10 @@ import {
 import { ItemService } from './item.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
-import { GetUser } from 'src/auth/user.decorator';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { OwnerAuthGuard } from 'src/auth/guards/owner-auth.guard';
-import { UserWithUserable } from 'src/auth/auth-interfaces';
+import { GetUser } from '../auth/user.decorator';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { OwnerAuthGuard } from '../auth/guards/owner-auth.guard';
+import { UserWithUserable } from '../auth/auth-interfaces';
 
 @Controller('item')
 export class ItemController {

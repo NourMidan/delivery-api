@@ -3,9 +3,9 @@ import {
   ConflictException,
   UnauthorizedException,
 } from '@nestjs/common/exceptions';
-import { UserWithUserable } from 'src/auth/auth-interfaces';
-import { CartsRepository } from 'src/cart/carts.respository';
-import { ItemsRepository } from 'src/item/items.respository';
+import { UserWithUserable } from '../auth/auth-interfaces';
+import { CartsRepository } from '../cart/carts.respository';
+import { ItemsRepository } from '../item/items.respository';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { OrdersRepository } from './order.respository';
 

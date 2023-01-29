@@ -6,11 +6,11 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { ClientsService } from 'src/clients/clients.service';
-import { CreateOwnerDto } from 'src/auth/dto/create-owner.dto';
-import { OwnersService } from 'src/owners/owners.service';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
-import { User } from 'src/users/entities/user.entity';
+import { ClientsService } from '../clients/clients.service';
+import { CreateOwnerDto } from '../auth/dto/create-owner.dto';
+import { OwnersService } from '../owners/owners.service';
+import { CreateUserDto } from '../users/dto/create-user.dto';
+import { User } from '../users/entities/user.entity';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';

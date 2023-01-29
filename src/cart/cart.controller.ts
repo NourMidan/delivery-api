@@ -1,9 +1,9 @@
 import { Controller, Get, Post, Body, Patch, UseGuards } from '@nestjs/common';
-import { UserWithUserable } from 'src/auth/auth-interfaces';
-import { GetUser } from 'src/auth/user.decorator';
-import { ClientAuthGuard } from 'src/auth/guards/client-auth.guard';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { Client } from 'src/clients/entities/client.entity';
+import { UserWithUserable } from '../auth/auth-interfaces';
+import { GetUser } from '../auth/user.decorator';
+import { ClientAuthGuard } from '../auth/guards/client-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { Client } from '../clients/entities/client.entity';
 import { CartService } from './cart.service';
 
 @Controller('cart')

@@ -7,16 +7,13 @@ import { UsersRepository } from './users.respository';
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
-  // async findOneByEmail(email: string): Promise<User> {
-  //   const user = await this.usersRepository.findOneBy({ email });
-  //   if (!user) return null;
-
-  //   return user;
-  // }
-
   async findOneByEmail(email: string): Promise<User> {
-    return this.usersRepository.findOneByEmail(email);
+    const user = await this.usersRepository.findOneBy({ email });
+    if (!user) return null;
+
+    return user;
   }
+
   async findOneById(id: string): Promise<User> {
     const user = await this.usersRepository.findOneBy({ id });
     if (!user) return null;

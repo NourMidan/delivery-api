@@ -1,6 +1,6 @@
-import { Item } from 'src/item/entities/item.entity';
-import { Order } from 'src/order/entities/order.entity';
-import { Owner } from 'src/owners/entities/owner.entity';
+import { Item } from '../../item/entities/item.entity';
+import { Order } from '../../order/entities/order.entity';
+import { Owner } from '../../owners/entities/owner.entity';
 import {
   Column,
   Entity,

@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { Client } from './entities/client.entity';
 import { BadRequestException } from '@nestjs/common/exceptions';
 import { JwtService } from '@nestjs/jwt/dist';
-import { UsersService } from 'src/users/users.service';
-import { User } from 'src/users/entities/user.entity';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { UsersService } from '../users/users.service';
+import { User } from '../users/entities/user.entity';
+import { CreateUserDto } from '../users/dto/create-user.dto';
 import { ClientsRepository } from './clients.respository';
-import { CartsRepository } from 'src/cart/carts.respository';
+import { CartsRepository } from '../cart/carts.respository';
 
 @Injectable()
 export class ClientsService {

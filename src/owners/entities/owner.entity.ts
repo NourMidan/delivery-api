@@ -1,4 +1,4 @@
-import { Menu } from 'src/menu/entities/menu.entity';
+import { Menu } from '../../menu/entities/menu.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,

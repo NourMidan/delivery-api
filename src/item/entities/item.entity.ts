@@ -1,6 +1,6 @@
-import { Cart } from 'src/cart/entities/cart.entity';
-import { Menu } from 'src/menu/entities/menu.entity';
-import { Order } from 'src/order/entities/order.entity';
+import { Cart } from '../../cart/entities/cart.entity';
+import { Menu } from '../../menu/entities/menu.entity';
+import { Order } from '../../order/entities/order.entity';
 import {
   Column,
   Entity,

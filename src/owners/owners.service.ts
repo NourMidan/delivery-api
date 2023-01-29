@@ -6,10 +6,10 @@ import {
   BadRequestException,
   NotFoundException,
 } from '@nestjs/common/exceptions';
-import { Categories } from 'src/menu/entities/menu.entity';
-import { UsersService } from 'src/users/users.service';
-import { User } from 'src/users/entities/user.entity';
-import { MenusRepository } from 'src/menu/menu.respository';
+import { Categories } from '../menu/entities/menu.entity';
+import { UsersService } from '../users/users.service';
+import { User } from '../users/entities/user.entity';
+import { MenusRepository } from '../menu/menu.respository';
 import { OwnersRepository } from './owners.respository';
 
 @Injectable()

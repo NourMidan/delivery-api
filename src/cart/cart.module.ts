@@ -3,11 +3,11 @@ import { CartService } from './cart.service';
 import { CartController } from './cart.controller';
 import { Cart } from './entities/cart.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from 'src/auth/auth.module';
+import { AuthModule } from '../auth/auth.module';
 import { PassportModule } from '@nestjs/passport';
-import { Item } from 'src/item/entities/item.entity';
-import { Menu } from 'src/menu/entities/menu.entity';
-import { ItemsRepository } from 'src/item/items.respository';
+import { Item } from '../item/entities/item.entity';
+import { Menu } from '../menu/entities/menu.entity';
+import { ItemsRepository } from '../item/items.respository';
 import { CartsRepository } from './carts.respository';
 
 @Module({

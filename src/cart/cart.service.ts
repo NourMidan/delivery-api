@@ -1,8 +1,8 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { UnauthorizedException } from '@nestjs/common/exceptions';
-import { UserWithUserable } from 'src/auth/auth-interfaces';
-import { Client } from 'src/clients/entities/client.entity';
-import { ItemsRepository } from 'src/item/items.respository';
+import { UserWithUserable } from '../auth/auth-interfaces';
+import { Client } from '../clients/entities/client.entity';
+import { ItemsRepository } from '../item/items.respository';
 import { CartsRepository } from './carts.respository';
 
 @Injectable()

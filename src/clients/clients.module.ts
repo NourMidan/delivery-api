@@ -5,13 +5,13 @@ import { Client } from './entities/client.entity';
 import { ClientsService } from './clients.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthModule } from 'src/auth/auth.module';
-import { Cart } from 'src/cart/entities/cart.entity';
-import { UsersService } from 'src/users/users.service';
-import { User } from 'src/users/entities/user.entity';
+import { AuthModule } from '../auth/auth.module';
+import { Cart } from '../cart/entities/cart.entity';
+import { UsersService } from '../users/users.service';
+import { User } from '../users/entities/user.entity';
 import { ClientsRepository } from './clients.respository';
-import { CartsRepository } from 'src/cart/carts.respository';
-import { UsersRepository } from 'src/users/users.respository';
+import { CartsRepository } from '../cart/carts.respository';
+import { UsersRepository } from '../users/users.respository';
 @Module({
   controllers: [ClientsController],
   providers: [

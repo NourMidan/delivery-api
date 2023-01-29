@@ -1,5 +1,5 @@
-import { Client } from 'src/clients/entities/client.entity';
-import { Item } from 'src/item/entities/item.entity';
+import { Client } from '../../clients/entities/client.entity';
+import { Item } from '../../item/entities/item.entity';
 import {
   Column,
   Entity,

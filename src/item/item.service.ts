@@ -3,7 +3,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UserWithUserable } from 'src/auth/auth-interfaces';
+import { UserWithUserable } from '../auth/auth-interfaces';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { ItemsRepository } from './items.respository';

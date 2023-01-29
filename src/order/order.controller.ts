@@ -9,11 +9,11 @@ import {
 } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { UpdateOrderDto } from './dto/update-order.dto';
-import { GetUser } from 'src/auth/user.decorator';
-import { ClientAuthGuard } from 'src/auth/guards/client-auth.guard';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { UserWithUserable } from 'src/auth/auth-interfaces';
-import { OwnerAuthGuard } from 'src/auth/guards/owner-auth.guard';
+import { GetUser } from '../auth/user.decorator';
+import { ClientAuthGuard } from '../auth/guards/client-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { UserWithUserable } from '../auth/auth-interfaces';
+import { OwnerAuthGuard } from '../auth/guards/owner-auth.guard';
 
 @Controller('order')
 export class OrderController {
