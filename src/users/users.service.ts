@@ -23,7 +23,7 @@ export class UsersService {
 
   async create(
     userData: userData,
-    userable: Userable,
+    userId:string ,
     type: string,
   ): Promise<User> {
     const salt = await bcrypt.genSalt();
@@ -32,12 +32,11 @@ export class UsersService {
     const user = this.usersRepository.create({
       email: userData.email,
       password: hash,
-      targetId: userable.id,
+      targetId: userId,
       targetType: type,
     });
-    console.log(user);
-    const { password, ...createdUser } = await this.usersRepository.save(user);
-
+    const {password,  ...createdUser } = await this.usersRepository.save(user);
+    
     return createdUser as User;
   }
 }

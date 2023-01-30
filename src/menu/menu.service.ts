@@ -16,9 +16,7 @@ export class MenuService {
   async filter(options: IPaginationOptions, filterMenuDto: FilterMenuDto) {
     const { search, category } = filterMenuDto;
 
-    // const defaultCategories = ['pizza', 'burger', 'pasta', 'dessert', 'drinks'];
-
-    // const categoryFilter = category ? [category] : defaultCategories;
+  
     const query = this.menuRepository
       .createQueryBuilder('menu')
       .groupBy('menu.id')

@@ -29,7 +29,7 @@ export class OwnersService {
     }
     const Owner = await this.createOwner(createOwnerDto);
 
-    return await this.usersService.create(createOwnerDto, Owner, type);
+    return await this.usersService.create(createOwnerDto, Owner.id, type);
   }
 
   async createOwner(createOwnerDto: CreateOwnerDto): Promise<Owner> {

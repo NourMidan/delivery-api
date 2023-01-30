@@ -24,7 +24,7 @@ export class ClientsService {
     }
     const client = await this.createClient();
 
-    return await this.usersService.create(createUserDto, client, type);
+    return await this.usersService.create(createUserDto, client.id, type);
   }
 
   async createClient(): Promise<Client> {

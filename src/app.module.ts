@@ -18,7 +18,7 @@ import { UsersModule } from './users/users.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '1234',
+      password: 'password',
       database: 'delivery',
       entities: ['dist/**/*.entity.js'],
       synchronize: true,
