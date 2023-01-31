@@ -1,6 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { Expose } from 'class-transformer';
 import { IsEnum } from 'class-validator';
+import { Owner } from 'src/owners/entities/owner.entity';
 import { Any } from 'typeorm';
 import { Categories, Menu } from './entities/menu.entity';
 import { MenusRepository } from './menu.respository';
@@ -12,9 +13,16 @@ const mockFilterOptions = {
 };
 
 const mockMenu = {
+  id: '1234',
   name: 'menu1',
   category: [],
-  owner: {},
+  // owner: new Owner(),
+  owner  :{
+    id: '1',
+    isOwner: true,
+    
+  } as Owner,
+  
   items: [],
   orders: [],
 };
@@ -72,9 +80,9 @@ const mockMenusRepository = () => ({
   createQueryBuilder: jest.fn(() => ({
     where: jest.fn().mockReturnThis(),
     andWhere: jest.fn().mockReturnThis(),
-    getMany : jest.fn().mockImplementation(() => mockPaginate),
     take: jest.fn().mockReturnThis(),
     skip: jest.fn().mockReturnThis(),
+    getMany : jest.fn().mockImplementation(() => mockPaginate),
     
     
   })),
@@ -86,7 +94,7 @@ const mockMenusRepository = () => ({
 
 
 describe('MenuService', () => {
-  let menuRepository;
+  let menuRepository:MenusRepository;
   let menuService: MenuService;
 
   beforeEach(async () => {
@@ -103,7 +111,7 @@ describe('MenuService', () => {
   test('find one menu', async () => {
     const repoSpy = jest
       .spyOn(menuRepository, 'findOne')
-      .mockResolvedValue({ id: '1234', ...mockMenu });
+      .mockResolvedValue({  ...mockMenu });
     expect(menuService.findOne('1234')).resolves.toEqual({
       id: '1234',
       ...mockMenu,
