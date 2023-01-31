@@ -20,12 +20,6 @@ const mockUserWithoutPassword = {
   email: 'user@email',
   targetType: 'client',
 };
-const mockCart = {
-  id: '1234',
-  items: [],
-  menuId: null,
-  client: {},
-};
 
 const data =  { email: 'user@email', password: '123456789' }
 
@@ -51,7 +45,7 @@ describe('UsersService', () => {
 
   // global spy
   // let repoSpy: jest.SpyInstance
-  beforeEach(async () => {
+  beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         UsersService,
@@ -94,8 +88,8 @@ describe('UsersService', () => {
     });
   });
 
-  describe('create', () => {
-    it('creates new user', async () => {
+  // describe('create', () => {
+    test('creates new user', async () => {
       const genSaltSpy = jest.spyOn(bcrypt, 'genSalt').mockImplementation(() => null);
       const hashSpy = jest.spyOn(bcrypt, 'hash').mockImplementation(() => '**');
       const createUserSpy = jest.spyOn(usersRepository, 'create').mockResolvedValue({
@@ -104,7 +98,7 @@ describe('UsersService', () => {
         password: hashSpy,
         ...mockUserWithoutPassword,
       });
-
+      
       const userwithpassword ={password:"**",...user}
       const saveUserSpy = jest.spyOn(usersRepository, 'save').mockImplementation(() =>userwithpassword);
       const expected = await usersService.create(
@@ -126,5 +120,5 @@ describe('UsersService', () => {
 
      
     });
-  });
+  // });
 });

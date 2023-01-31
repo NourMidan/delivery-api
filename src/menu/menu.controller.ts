@@ -12,8 +12,8 @@ export class MenuController {
 
   @Get('/list')
   filter(
-    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
-    @Query('limit', new DefaultValuePipe(5), ParseIntPipe) limit = 1,
+    @Query('page', new DefaultValuePipe(1), ) page = 1,
+    @Query('limit', new DefaultValuePipe(5),) limit = 1,
     @Query('search', new DefaultValuePipe('')) search: string,
     @Query('category', new DefaultValuePipe('')) category: Categories,
   ) {
