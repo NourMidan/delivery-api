@@ -12,13 +12,13 @@ import { ItemsRepository } from './items.respository';
 export class ItemService {
   constructor(private itemRepository: ItemsRepository) {}
 
-  async create(createItemDto: CreateItemDto, owner: UserWithUserable) {
+  async create(createItemDto: CreateItemDto, user: UserWithUserable) {
     const { name, description } = createItemDto;
     const item = this.itemRepository.create({
       name,
       description,
       // owner.userable.menu  not working
-      menu: owner.userable['menu'],
+      menu: user.userable['menu'],
     });
     try {
       return await this.itemRepository.save(item);

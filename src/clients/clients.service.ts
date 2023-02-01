@@ -13,7 +13,7 @@ export class ClientsService {
   constructor(
     private clientsRepository: ClientsRepository,
     private cartRepository: CartsRepository,
-    private jwt: JwtService,
+    // private jwt: JwtService,
     private usersService: UsersService,
   ) {}
 
