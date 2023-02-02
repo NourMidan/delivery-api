@@ -7,12 +7,14 @@ import { DatabaseConfig } from './dbConfig';
   imports: [
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => {
+      useFactory: async (configService: ConfigService) => {
         const db =
           configService.get<string>('NODE_ENV') === 'test'
             ? 'testDB'
             : 'database';
-        return {
+        
+          console.log(db);        
+            return {
           autoLoadEntities: true,
           entities: ['dist/**/*.entity.js'],
           type: 'mysql',
