@@ -8,21 +8,27 @@ import { ItemModule } from './item/item.module';
 import { AuthModule } from './auth/auth.module';
 import { ClientsModule } from './clients/clients.module';
 import { UsersModule } from './users/users.module';
+import { ConfigModule } from '@nestjs/config';
+import configurations from './config/configurations';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
     ClientsModule,
+    ConfigModule.forRoot({
+      load: [configurations],
 
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'password',
-      database: 'delivery',
-      entities: ['dist/**/*.entity.js'],
-      synchronize: true,
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: 'localhost',
+    //   port: 3306,
+    //   username: 'root',
+    //   password: 'password',
+    //   database: 'delivery',
+    //   entities: ['dist/**/*.entity.js'],
+    //   synchronize: true,
+    // }),
     OwnersModule,
     CartModule,
     OrderModule,
@@ -30,6 +36,7 @@ import { UsersModule } from './users/users.module';
     ItemModule,
     AuthModule,
     UsersModule,
+    DatabaseModule
   ],
   controllers: [],
   providers: [],
