@@ -6,7 +6,6 @@ export class CreateOwnerDto {
   @IsString()
   email: string;
 
-  
   @IsNotEmpty()
   @IsString()
   @MinLength(8)

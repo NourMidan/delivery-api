@@ -34,15 +34,17 @@ export class Menu {
   })
   category: Categories[];
 
-  @OneToOne(() => Owner, (owner) => owner.menu, { eager: false })
+  @OneToOne(() => Owner, (owner) => owner.menu, {
+    eager: false,
+    onDelete: 'CASCADE',
+  })
   owner: Owner;
 
   @OneToMany(() => Item, (item) => item.menu, {
     eager: true,
-    onDelete: 'CASCADE',
   })
   items: Item[];
 
-  @OneToMany(() => Order, (order) => order.menu, { eager: false })
+  @OneToMany(() => Order, (order) => order.menu, { eager: true })
   orders: Order[];
 }

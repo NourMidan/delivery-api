@@ -1,6 +1,7 @@
 import {
   ConflictException,
   Injectable,
+  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { UserWithUserable } from '../auth/auth-interfaces';
@@ -31,7 +32,10 @@ export class ItemService {
   }
 
   async findOne(id: string) {
-    return await this.itemRepository.findOneBy({ id });
+    const item = await this.itemRepository.findOneBy({ id });
+    if (!item) throw new NotFoundException('not found');
+
+    return item;
   }
 
   async update(

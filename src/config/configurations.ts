@@ -15,7 +15,7 @@ export default () => ({
     database: process.env.MYSQL_TEST_DATABASE,
     host: process.env.MYSQL_TEST_HOST,
     port: parseInt(process.env.MYSQL_TEST_PORT),
-    username: 'root',
+    username: process.env.MYSQL_TEST_USERNAME,
     password: process.env.MYSQL_TEST_PASSWORD,
     synchronize: true,
   },

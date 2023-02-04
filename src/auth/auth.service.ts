@@ -10,6 +10,7 @@ import * as bcrypt from 'bcrypt';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UsersService } from '../users/users.service';
 import { UserWithUserable } from './auth-interfaces';
+import { User } from 'src/users/entities/user.entity';
 @Injectable()
 export class AuthService {
   constructor(
@@ -23,7 +24,9 @@ export class AuthService {
     const { password, username: email } = loginUserDto;
 
     const findUser = await this.usersService.findOneByEmail(email);
+
     if (!findUser) throw new NotFoundException('user  does not exist');
+
     if (!(await bcrypt.compare(password, findUser.password))) {
       throw new UnauthorizedException('wrong credentials');
     } else {
@@ -33,16 +36,22 @@ export class AuthService {
     }
   }
 
-  async signIn(user: UserWithUserable) {
+  async signIn(user: User) {
+    let userWithUserable: UserWithUserable = { ...user, userable: null };
+
     if (user.targetType === 'client') {
-      user.userable = await this.clientsService.findOneById(user.targetId);
+      userWithUserable.userable = await this.clientsService.findOneById(
+        user.targetId,
+      );
     } else if (user.targetType === 'owner') {
-      user.userable = await this.ownerService.findOneById(user.targetId);
+      userWithUserable.userable = await this.ownerService.findOneById(
+        user.targetId,
+      );
     }
     const payload = { id: user.id };
     const token = this.jwt.sign(payload);
 
-    return { ...user, token };
+    return { ...userWithUserable, token };
   }
 
   async validateUser(id: string): Promise<UserWithUserable> {

@@ -16,7 +16,6 @@ export class Cart {
 
   @ManyToMany(() => Item, (item) => item.cart, {
     eager: true,
-    onDelete: 'CASCADE',
   })
   @JoinTable()
   items: Item[];
@@ -24,6 +23,8 @@ export class Cart {
   @Column({ nullable: true })
   menuId: string;
 
-  @OneToOne(() => Client, (client) => client.cart, { eager: false })
+  @OneToOne(() => Client, (client) => client.cart, {
+    onDelete: 'CASCADE',
+  })
   client: Client;
 }

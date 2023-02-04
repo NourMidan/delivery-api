@@ -7,34 +7,49 @@ import { User } from '../users/entities/user.entity';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import { ClientsRepository } from './clients.respository';
 import { CartsRepository } from '../cart/carts.respository';
+import { UserWithUserable } from 'src/auth/auth-interfaces';
 
 @Injectable()
 export class ClientsService {
   constructor(
     private clientsRepository: ClientsRepository,
     private cartRepository: CartsRepository,
-    // private jwt: JwtService,
     private usersService: UsersService,
   ) {}
 
-  async signUp(createUserDto: CreateUserDto, type: string): Promise<User> {
-    const user = await this.usersService.findOneByEmail(createUserDto.email);
+  async signUp(
+    createClientDto: CreateUserDto,
+    type: string,
+  ): Promise<UserWithUserable> {
+    const user = await this.usersService.findOneByEmail(createClientDto.email);
     if (user) {
       throw new BadRequestException('This email is already registered!');
     }
     const client = await this.createClient();
 
-    return await this.usersService.create(createUserDto, client.id, type);
+    const userData = await this.usersService.create(
+      createClientDto,
+      client.id,
+      type,
+    );
+
+    const userPayload: UserWithUserable = {
+      ...userData,
+      userable: client,
+    };
+
+    return userPayload;
   }
 
   async createClient(): Promise<Client> {
     // creating cart for new client
-    const newCart = this.cartRepository.create();
+    const newCart = this.cartRepository.create({ items: [] });
     const cart = await this.cartRepository.save(newCart);
 
     const newClient = this.clientsRepository.create({
       // name,
       cart,
+      orders: [],
     });
 
     let client: Client;

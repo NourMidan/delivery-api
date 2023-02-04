@@ -28,10 +28,16 @@ export class Order {
   })
   status: Status;
 
-  @ManyToOne(() => Client, (client) => client.orders, { eager: false })
+  @ManyToOne(() => Client, (client) => client.orders, {
+    eager: false,
+    onDelete: 'CASCADE',
+  })
   client: Client;
 
-  @ManyToOne(() => Menu, (menu) => menu.orders, { eager: false })
+  @ManyToOne(() => Menu, (menu) => menu.orders, {
+    eager: false,
+    onDelete: 'CASCADE',
+  })
   menu: Menu;
 
   @ManyToMany(() => Item, (item) => item.order, {

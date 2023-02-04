@@ -12,9 +12,8 @@ import { DatabaseConfig } from './dbConfig';
           configService.get<string>('NODE_ENV') === 'test'
             ? 'testDB'
             : 'database';
-        
-          console.log(db);        
-            return {
+
+        return {
           autoLoadEntities: true,
           entities: ['dist/**/*.entity.js'],
           type: 'mysql',

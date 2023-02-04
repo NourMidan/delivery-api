@@ -35,8 +35,6 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   public async login(@Request() req) {
-    
-
     return await this.authService.signIn(req.user);
   }
 

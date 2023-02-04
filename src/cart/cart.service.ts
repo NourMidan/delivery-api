@@ -58,7 +58,6 @@ export class CartService {
     const { item } = body;
     const cart = await this.cartRepository.findOneBy({ id });
 
-    console.log('client', client);
     if (cart.items.length === 1) {
       return await this.clear(client.userable as Client);
     } else {
@@ -80,7 +79,7 @@ export class CartService {
     const { id } = client.cart;
     const cart = await this.cartRepository.findOneBy({ id });
     cart.items = [];
-    cart.menuId = '';
+    cart.menuId = null;
     return await this.cartRepository.save(cart);
   }
 }

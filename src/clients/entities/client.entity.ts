@@ -16,7 +16,10 @@ export class Client {
   @OneToMany(() => Order, (order) => order.client, { eager: true })
   orders: Order[];
 
-  @OneToOne(() => Cart, (cart) => cart.client, { eager: true })
+  @OneToOne(() => Cart, (cart) => cart.client, {
+    eager: true,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   cart: Cart;
 }

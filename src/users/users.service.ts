@@ -7,6 +7,26 @@ import { UsersRepository } from './users.respository';
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
+  async create(
+    userData: userData,
+    targetId: string,
+    targetType: string,
+  ): Promise<User> {
+    const salt = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(userData.password, salt);
+
+    const user = this.usersRepository.create({
+      email: userData.email,
+      password: hash,
+      targetId,
+      targetType,
+    });
+
+    const { password, ...createdUser } = await this.usersRepository.save(user);
+
+    return createdUser as User;
+  }
+
   async findOneByEmail(email: string): Promise<User> {
     const user = await this.usersRepository.findOneBy({ email });
     if (!user) return null;
@@ -19,24 +39,5 @@ export class UsersService {
     if (!user) return null;
 
     return user;
-  }
-
-  async create(
-    userData: userData,
-    userId:string ,
-    type: string,
-  ): Promise<User> {
-    const salt = await bcrypt.genSalt();
-    const hash = await bcrypt.hash(userData.password, salt);
-
-    const user = this.usersRepository.create({
-      email: userData.email,
-      password: hash,
-      targetId: userId,
-      targetType: type,
-    });
-    const {password,  ...createdUser } = await this.usersRepository.save(user);
-    
-    return createdUser as User;
   }
 }

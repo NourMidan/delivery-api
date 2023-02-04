@@ -13,7 +13,6 @@ import { OrdersRepository } from './order.respository';
 export class OrderService {
   constructor(
     private readonly orderRepository: OrdersRepository,
-    private readonly itemRepository: ItemsRepository,
     private readonly cartRepository: CartsRepository,
   ) {}
 
@@ -27,8 +26,9 @@ export class OrderService {
     const newOrder = await this.orderRepository.save(order);
 
     if (newOrder) {
-      this.clearCart(user);
+      await this.clearCart(user);
     }
+    return newOrder;
   }
 
   async findOne(id: string) {
@@ -39,14 +39,6 @@ export class OrderService {
   }
 
   async getClientOrders(user: UserWithUserable) {
-    // const orders = userData.orders.reduce(
-    //   (acc, current) => acc.concat(current.id),
-    //   [],
-    // );
-    // return await this.orderRepository.find({
-    //   where: { id: In(orders) },
-    // });
-
     return await this.orderRepository.find({
       where: { client: { id: user.userable.id } },
     });

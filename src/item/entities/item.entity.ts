@@ -20,18 +20,21 @@ export class Item {
   @Column()
   description: string;
 
-  @ManyToOne(() => Menu, (menu) => menu.items, { eager: false })
+  @ManyToOne(() => Menu, (menu) => menu.items, {
+    eager: false,
+    onDelete: 'CASCADE',
+  })
   menu: Menu;
 
   @ManyToMany(() => Cart, (cart) => cart.items, {
     eager: false,
-    onDelete: 'CASCADE',
   })
   cart: Cart;
 
   @ManyToMany(() => Order, (order) => order.items, {
     eager: false,
     onDelete: 'CASCADE',
+    nullable: true,
   })
   order: Order;
 }

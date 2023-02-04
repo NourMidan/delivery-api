@@ -11,6 +11,8 @@ import { UsersService } from '../users/users.service';
 import { User } from '../users/entities/user.entity';
 import { MenusRepository } from '../menu/menu.respository';
 import { OwnersRepository } from './owners.respository';
+import { UserWithUserable } from 'src/auth/auth-interfaces';
+import { Userable } from 'src/users/users.type';
 
 @Injectable()
 export class OwnersService {
@@ -22,14 +24,28 @@ export class OwnersService {
     private jwt: JwtService,
   ) {}
 
-  async signUp(createOwnerDto: CreateOwnerDto, type: string): Promise<User> {
+  async signUp(
+    createOwnerDto: CreateOwnerDto,
+    type: string,
+  ): Promise<UserWithUserable> {
     const user = await this.usersService.findOneByEmail(createOwnerDto.email);
     if (user) {
       throw new BadRequestException('This email is already registered!');
     }
-    const Owner = await this.createOwner(createOwnerDto);
+    const owner = await this.createOwner(createOwnerDto);
 
-    return await this.usersService.create(createOwnerDto, Owner.id, type);
+    const userData = await this.usersService.create(
+      createOwnerDto,
+      owner.id,
+      type,
+    );
+
+    const userPayload: UserWithUserable = {
+      ...userData,
+      userable: owner,
+    };
+
+    return userPayload;
   }
 
   async createOwner(createOwnerDto: CreateOwnerDto): Promise<Owner> {
@@ -58,6 +74,8 @@ export class OwnersService {
     const newMenu = this.menuRepository.create({
       name: menuName,
       category,
+      orders: [],
+      items: [],
     });
     const menu = await this.menuRepository.save(newMenu);
 
